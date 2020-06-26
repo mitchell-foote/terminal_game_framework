@@ -1,0 +1,14 @@
+{
+  "name": "terminal-game",
+  "version": "1.0.0",
+  "description": "This is a monorepo housing a game library and a CRA area in which to run/deploy it",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "Mitchell Foote",
+  "license": "ISC",
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}

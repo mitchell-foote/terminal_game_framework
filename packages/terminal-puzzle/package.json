@@ -1,0 +1,41 @@
+{
+  "name": "terminal-puzzle",
+  "version": "1.0.0",
+  "description": "This is a terminal puzzle game library, hopefully to be used to make fun terminal-looking games. ",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "test": "npm run test",
+    "story": "start-storybook"
+  },
+  "author": "Mitchell Foote",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-typescript": "^7.9.0",
+    "@storybook/react": "^5.2.5",
+    "@types/enzyme": "^3.1.14",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
+    "@types/jest": "^24.0.11",
+    "@types/storybook__react": "^4.0.2",
+    "babel-jest": "^25.2.4",
+    "babel-loader": "^8.0.6",
+    "babel-preset-react-app": "^9.1.2",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^25.2.4",
+    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "typescript": "^3.9.5",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}

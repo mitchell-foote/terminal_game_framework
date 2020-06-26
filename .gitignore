@@ -1,0 +1,33 @@
+node_modules
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# vscode
+.vscode/
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+#Aladdin
+aladdin_library.json
+# testing
+coverage
+
+# production
+/packages/*/lib
+
+# dist
+/packages/*/dist
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

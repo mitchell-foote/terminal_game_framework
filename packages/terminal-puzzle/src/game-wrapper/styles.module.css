@@ -1,14 +1,12 @@
 
 .full-wrapped-terminal {
-    width: 100%;
     height: 100%;
     background-color: black;
     padding: 1em;
 }
 
 .terminal-text-area {
-    width: calc(100% - 2em);
-    height: calc(100% - 2em);
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -17,7 +15,6 @@
     border-radius: 10px;
     border: 2px solid limegreen;
     color: limegreen;
-    margin: 1em;
 }
 
 .line-wrapper {

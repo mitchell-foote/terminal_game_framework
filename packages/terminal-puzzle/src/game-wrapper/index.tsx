@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './styles.module.css';
+import styles from '../styles/styles.module.css';
 
 export interface GameWrapperProps {
     theme?: string
@@ -18,7 +18,13 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
         super(props);
         this.state.currentComponent = this.props.startingComponent;
         this.onUpdateTextChain = this.onUpdateTextChain.bind(this);
+        this.onClearTextChain = this.onClearTextChain.bind(this);
+        this.onUpdateCurrentComponent = this.onUpdateCurrentComponent.bind(this);
+        this.onUpdateOverallState = this.onUpdateOverallState.bind(this);
+        this.onAddTextChain = this.onAddTextChain.bind(this);
+        this.onDisplayGlobalHelp = this.onDisplayGlobalHelp.bind(this);
     }
+
     onUpdateTextChain(textArray: string[]) {
         this.setState({ textChain: textArray });
     }
@@ -52,7 +58,8 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
                     <CurrentComponent
                         clearLines={this.onClearTextChain}
                         addLine={this.onAddTextChain}
-                        globalHelp={this.onDisplayGlobalHelp}
+                        showGlobalHelp={this.onDisplayGlobalHelp}
+                        updateComponent={this.onUpdateCurrentComponent}
                         overallState={this.state.overallState}
                         updateOverallState={this.onUpdateOverallState}
                     />

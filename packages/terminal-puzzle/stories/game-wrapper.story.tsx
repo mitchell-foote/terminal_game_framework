@@ -2,6 +2,7 @@ import * as React from 'react';
 import { storiesOf } from "@storybook/react"
 import GameWrapper from '../src/game-wrapper'
 import ShowTextHelper from '../src/show-text-helper';
+import TerminalInputHelper from '../src/terminal-input-helper'
 import { GameComponentProps } from '../src/types'
 
 storiesOf("Game Wrapper", module).add('test init', () => {
@@ -37,6 +38,19 @@ storiesOf("Game Wrapper", module).add('test init', () => {
                                 }}
                             />
                         )
+                    }} />
+                )
+            }} />
+        </div>
+    )
+}).add('test TerminalInputHelper', () => {
+    return (
+        <div style={{ height: '50vh' }}>
+            <GameWrapper startingComponent={(props: GameComponentProps) => {
+                return (
+                    <TerminalInputHelper onSumbitCommand={(command, args, fullText) => {
+                        console.log(command, args, fullText)
+                        props.addLine([fullText]);
                     }} />
                 )
             }} />

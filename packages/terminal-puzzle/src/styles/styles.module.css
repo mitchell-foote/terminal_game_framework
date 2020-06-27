@@ -20,11 +20,27 @@
 .line-wrapper {
     margin: .5em;
     margin-left: 1em;
+    width: calc(100% - 1.5em);
+}
+
+
+.terminal-input {
+    width: 100%;
+    border-width: 0;
+    border-style: none;
+    font-size: inherit;
+    background-color: inherit;
+    color: inherit;
+    font-family: inherit;
+    padding: 0;
+}
+.terminal-input:focus {
+    outline-offset: 0;
+    outline: none;
 }
 
 .hacker-font {
     font-family: "Courier New", Courier, monospace;
     font-weight: normal;
     font-style: normal;
-
 }

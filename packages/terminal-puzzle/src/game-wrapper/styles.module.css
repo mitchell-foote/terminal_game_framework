@@ -1,0 +1,32 @@
+
+.full-wrapped-terminal {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    padding: 1em;
+}
+
+.terminal-text-area {
+    width: calc(100% - 2em);
+    height: calc(100% - 2em);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow-y: auto;
+    border-radius: 10px;
+    border: 2px solid limegreen;
+    color: limegreen;
+    margin: 1em;
+}
+
+.line-wrapper {
+    margin: 1em;
+}
+
+.hacker-font {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: normal;
+    font-style: normal;
+
+}

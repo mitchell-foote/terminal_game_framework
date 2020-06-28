@@ -1,4 +1,14 @@
 
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
 .full-wrapped-terminal {
     height: 100%;
     background-color: black;
@@ -23,6 +33,21 @@
     width: calc(100% - 1.5em);
 }
 
+.percent-padding {
+    padding-left: 5px;
+}
+
+.bad-color {
+    color: red;
+}
+
+.med-color {
+    color: yellow;
+}
+
+.reg-color {
+    color: limegreen;
+}
 
 .terminal-input {
     width: 100%;

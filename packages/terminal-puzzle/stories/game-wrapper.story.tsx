@@ -4,6 +4,7 @@ import GameWrapper from '../src/game-wrapper'
 import ShowTextHelper from '../src/show-text-helper';
 import TerminalInputHelper from '../src/terminal-input-helper'
 import LoadingHelper from '../src/loading-helper'
+import LoginWorkflow from '../src/login-workflow'
 import { GameComponentProps } from '../src/types'
 
 storiesOf("Game Wrapper", module).add('test init', () => {
@@ -95,6 +96,12 @@ storiesOf("Game Wrapper", module).add('test init', () => {
                     <LoadingHelper message={'Chargeing forward cannons'} showPercent={true} startPercent={0} endPercent={100} color={true} onFinish={() => { console.log("finished!") }} />
                 )
             }} />
+        </div>
+    )
+}).add('Login Workflow test', () => {
+    return (
+        <div style={{ height: '50vh' }}>
+            <GameWrapper startingComponent={LoginWorkflow} />
         </div>
     )
 })

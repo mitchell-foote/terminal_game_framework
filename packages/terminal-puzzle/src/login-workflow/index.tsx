@@ -5,7 +5,7 @@ import LoadingHelper from '../loading-helper';
 
 
 export interface LoginWorkflowProps extends GameComponentProps {
-
+    nextComponent?: React.ElementType
 }
 
 export interface LoginWorkflowState {
@@ -71,6 +71,7 @@ class LoginWorkflow extends React.Component<LoginWorkflowProps, LoginWorkflowSta
         this.setState({ showLoading: false, showUsername: false, showPassword: false }, () => {
             this.props.onWriteText({ message: 'Login Success!' }, () => {
                 this.props.addLine(["Welcome " + this.props.overallState.login.username]);
+                this.props.nextComponent && this.props.updateComponent(this.props.nextComponent);
             })
         })
     }

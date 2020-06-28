@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styles from '../styles/styles.module.css';
+import ShowTextHelper from '../show-text-helper';
 
 export interface GameWrapperProps {
     theme?: string
@@ -8,7 +9,7 @@ export interface GameWrapperProps {
 
 export interface GameWrapperState {
     overallState: any;
-    textChain: string[];
+    textChain: any[];
     currentComponent: React.ElementType
 }
 
@@ -23,10 +24,14 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
         this.onUpdateOverallState = this.onUpdateOverallState.bind(this);
         this.onAddTextChain = this.onAddTextChain.bind(this);
         this.onDisplayGlobalHelp = this.onDisplayGlobalHelp.bind(this);
+        this.onWriteText = this.onWriteText.bind(this);
     }
 
-    onUpdateTextChain(textArray: string[]) {
-        this.setState({ textChain: textArray });
+    onUpdateTextChain(textArray: any[]) {
+        console.log(textArray);
+        this.setState({ textChain: textArray }, () => {
+            this.forceUpdate();
+        });
     }
     onClearTextChain() {
         this.setState({ textChain: [] });
@@ -38,7 +43,7 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
         this.setState({ overallState: overallState });
     }
 
-    onAddTextChain(text: string[]) {
+    onAddTextChain(text: any[]) {
         let newArray = [...this.state.textChain, ...text];
         this.onUpdateTextChain(newArray);
     }
@@ -47,12 +52,17 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
         this.onUpdateTextChain(newArray);
     }
 
+    onWriteText(messageProps: any, callback?: Function) {
+        console.log(this.state.textChain);
+        this.onAddTextChain([<ShowTextHelper {...messageProps} onComplete={callback} />])
+    }
+
     render() {
         let CurrentComponent = this.state.currentComponent;
         return (<div className={`${styles['full-wrapped-terminal']} ${styles['hacker-font']}`} id="root-terminal-area">
             <div id="terminal-text-area" className={`${styles['terminal-text-area']}`}>
-                {this.state.textChain.map((each) => {
-                    return (<div className={`${styles['line-wrapper']}`}>{each}</div>)
+                {this.state.textChain.map((each, index) => {
+                    return (<div key={index + ' text'} className={`${styles['line-wrapper']}`}>{each}</div>)
                 })}
                 <div className={`${styles['line-wrapper']}`}>
                     <CurrentComponent
@@ -62,6 +72,7 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
                         updateComponent={this.onUpdateCurrentComponent}
                         overallState={this.state.overallState}
                         updateOverallState={this.onUpdateOverallState}
+                        onWriteText={this.onWriteText}
                     />
                 </div>
 

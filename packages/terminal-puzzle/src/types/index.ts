@@ -5,4 +5,5 @@ export interface GameComponentProps {
     addLine: (newLines: string[]) => void;
     updateComponent: (newComponent: React.ElementType) => void;
     showGlobalHelp: () => void;
+    onWriteText: (messageProps: any, callback?: Function) => void;
 }

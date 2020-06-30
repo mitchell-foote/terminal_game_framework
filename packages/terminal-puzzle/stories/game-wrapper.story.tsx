@@ -5,6 +5,7 @@ import ShowTextHelper from '../src/show-text-helper';
 import TerminalInputHelper from '../src/terminal-input-helper'
 import LoadingHelper from '../src/loading-helper'
 import LoginWorkflow from '../src/login-workflow'
+import OptionHelper from '../src/option-helper'
 import { GameComponentProps } from '../src/types'
 
 storiesOf("Game Wrapper", module).add('test init', () => {
@@ -102,6 +103,78 @@ storiesOf("Game Wrapper", module).add('test init', () => {
     return (
         <div style={{ height: '50vh' }}>
             <GameWrapper startingComponent={LoginWorkflow} />
+        </div>
+    )
+}).add('OptionHelper test', () => {
+    return (
+        <div style={{ height: '50vh' }}>
+            <GameWrapper startingComponent={(props: GameComponentProps) => {
+                return (
+                    <OptionHelper options={[
+                        {
+                            action: () => { console.log('called Gate_Control') },
+                            name: 'Gate_Control',
+                            description: 'Controls gate actions'
+                        },
+                        {
+                            action: () => { console.log('called security') },
+                            name: 'Security',
+                            description: 'Controls security actions'
+                        },
+                        {
+                            action: () => { console.log('called crew logs') },
+                            name: 'Crew_Logs',
+                            description: 'Access crew logs'
+                        },
+                        {
+                            action: () => { console.log('called engineering') },
+                            name: 'Engineering',
+                            description: 'Access engineering actions'
+                        },
+                        {
+                            action: () => { console.log('called back') },
+                            name: 'Back',
+                            description: 'Returns to previous screen'
+                        }
+                    ]} addLine={props.addLine} />
+                )
+            }} />
+        </div>
+    )
+}).add('options helper w/numbers', () => {
+    return (
+        <div style={{ height: '50vh' }}>
+            <GameWrapper startingComponent={(props: GameComponentProps) => {
+                return (
+                    <OptionHelper allowNumberChoice={true} options={[
+                        {
+                            action: () => { console.log('called Gate_Control') },
+                            name: 'Gate_Control',
+                            description: 'Controls gate actions'
+                        },
+                        {
+                            action: () => { console.log('called security') },
+                            name: 'Security',
+                            description: 'Controls security actions'
+                        },
+                        {
+                            action: () => { console.log('called crew logs') },
+                            name: 'Crew_Logs',
+                            description: 'Access crew logs'
+                        },
+                        {
+                            action: () => { console.log('called engineering') },
+                            name: 'Engineering',
+                            description: 'Access engineering actions'
+                        },
+                        {
+                            action: () => { console.log('called back') },
+                            name: 'Back',
+                            description: 'Returns to previous screen'
+                        }
+                    ]} addLine={props.addLine} />
+                )
+            }} />
         </div>
     )
 })

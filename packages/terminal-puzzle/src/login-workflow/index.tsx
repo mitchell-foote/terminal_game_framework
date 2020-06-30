@@ -5,6 +5,7 @@ import LoadingHelper from '../loading-helper';
 
 
 export interface LoginWorkflowProps extends GameComponentProps {
+    allowedLogins?: { [index: string]: string };
     nextComponent?: React.ElementType
 }
 
@@ -60,6 +61,18 @@ class LoginWorkflow extends React.Component<LoginWorkflowProps, LoginWorkflowSta
         if (fullText) {
             let overallState = { ...this.props.overallState };
             overallState.login.password = fullText.replace('> ', '');
+            if (this.props.allowedLogins) {
+                if (this.props.allowedLogins[this.props.overallState.login.username]) {
+                    if (this.props.allowedLogins[this.props.overallState.login.username] !== overallState.login.password) {
+                        this.props.onWriteText({ message: "Login incorrect, please try again" }, this.showUsername);
+                        return;
+                    }
+                }
+                else {
+                    this.props.onWriteText({ message: "Login incorrect, please try again" }, this.showUsername);
+                    return;
+                }
+            }
             this.props.updateOverallState(overallState);
             this.finishFlow();
         }

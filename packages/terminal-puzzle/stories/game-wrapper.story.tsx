@@ -105,6 +105,16 @@ storiesOf("Game Wrapper", module).add('test init', () => {
             <GameWrapper startingComponent={LoginWorkflow} />
         </div>
     )
+}).add('Login Workflow test with username:password restrictions', () => {
+    return (
+        <div style={{ height: '50vh' }}>
+            <GameWrapper startingComponent={(props: GameComponentProps) => {
+                return (
+                    <LoginWorkflow {...props} allowedLogins={{ username: 'password' }} />
+                )
+            }} />
+        </div>
+    )
 }).add('OptionHelper test', () => {
     return (
         <div style={{ height: '50vh' }}>

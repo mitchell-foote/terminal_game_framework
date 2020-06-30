@@ -1,7 +1,24 @@
-import TestClass from './starting-folder'
+import GameWrapper from './game-wrapper';
+import LoadingHelper from './loading-helper';
+import LoginWorkflow from './login-workflow';
+import OptionsHelper from './option-helper';
+import ShowTextHelper from './show-text-helper';
+import TerminalInputHelper from './terminal-input-helper';
+import * as Types from './types';
 
-export { TestClass }
+export { GameWrapper };
+export { LoadingHelper };
+export { LoginWorkflow };
+export { OptionsHelper };
+export { ShowTextHelper };
+export { TerminalInputHelper };
+export { Types };
 
 export default {
-    TestClass
+    GameWrapper,
+    LoadingHelper,
+    LoginWorkflow,
+    OptionsHelper,
+    ShowTextHelper,
+    TerminalInputHelper
 }

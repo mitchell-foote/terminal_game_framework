@@ -6,6 +6,8 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "test": "npm run test",
+    "libbuild": "rm -rf ./lib && tsc  && find ./lib -name '*_tests_*' -exec rm -r {} + && webpack",
+    "build": "npm run libbuild",
     "story": "start-storybook"
   },
   "author": "Mitchell Foote",

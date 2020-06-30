@@ -1,5 +1,5 @@
 {
-  "name": "terminal-puzzle",
+  "name": "react-terminal-game-builder",
   "version": "1.0.0",
   "description": "This is a terminal puzzle game library, hopefully to be used to make fun terminal-looking games. ",
   "main": "./lib/index.js",

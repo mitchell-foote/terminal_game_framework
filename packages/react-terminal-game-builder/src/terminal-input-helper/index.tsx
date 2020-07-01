@@ -3,7 +3,7 @@ import styles from '../styles/styles.module.css'
 
 
 export interface TerminalInputHelperProps {
-    onSumbitCommand: (command: string, args: string[], fullText?: string) => void;
+    onSumbitCommand: (command: string, args: string[], fullText: string) => void;
 }
 
 export interface TerminalInputHelperState {

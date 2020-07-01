@@ -6,7 +6,10 @@ import LoadingHelper from '../loading-helper';
 
 export interface LoginWorkflowProps extends GameComponentProps {
     allowedLogins?: { [index: string]: string };
-    nextComponent?: React.ElementType
+    nextComponent?: React.ElementType;
+    onLoginComplete?: Function;
+    disableWelcome?: boolean;
+    onLoginFailure?: Function;
 }
 
 export interface LoginWorkflowState {
@@ -65,11 +68,13 @@ class LoginWorkflow extends React.Component<LoginWorkflowProps, LoginWorkflowSta
                 if (this.props.allowedLogins[this.props.overallState.login.username]) {
                     if (this.props.allowedLogins[this.props.overallState.login.username] !== overallState.login.password) {
                         this.props.onWriteText({ message: "Login incorrect, please try again" }, this.showUsername);
+                        this.props.onLoginFailure && this.props.onLoginFailure();
                         return;
                     }
                 }
                 else {
                     this.props.onWriteText({ message: "Login incorrect, please try again" }, this.showUsername);
+                    this.props.onLoginFailure && this.props.onLoginFailure();
                     return;
                 }
             }
@@ -83,8 +88,9 @@ class LoginWorkflow extends React.Component<LoginWorkflowProps, LoginWorkflowSta
     loadComplete = () => {
         this.setState({ showLoading: false, showUsername: false, showPassword: false }, () => {
             this.props.onWriteText({ message: 'Login Success!' }, () => {
-                this.props.addLine(["Welcome " + this.props.overallState.login.username]);
+                !this.props.disableWelcome && this.props.addLine(["Welcome " + this.props.overallState.login.username]);
                 this.props.nextComponent && this.props.updateComponent(this.props.nextComponent);
+                this.props.onLoginComplete && this.props.onLoginComplete();
             })
         })
     }

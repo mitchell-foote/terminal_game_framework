@@ -27,29 +27,34 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
         this.onWriteText = this.onWriteText.bind(this);
     }
 
-    onUpdateTextChain(textArray: any[]) {
+    onUpdateTextChain(textArray: any[], callback?: Function) {
         console.log(textArray);
         this.setState({ textChain: textArray }, () => {
             this.forceUpdate();
+            callback && callback();
         });
     }
-    onClearTextChain() {
-        this.setState({ textChain: [] });
+    onClearTextChain(callback?: Function) {
+        this.setState({ textChain: [] }, () => {
+            callback && callback();
+        });
     }
     onUpdateCurrentComponent(newComponent: React.ElementType) {
         this.setState({ currentComponent: newComponent });
     }
-    onUpdateOverallState(overallState: any) {
-        this.setState({ overallState: overallState });
+    onUpdateOverallState(overallState: any, callback?: Function) {
+        this.setState({ overallState: overallState }, () => {
+            callback && callback();
+        });
     }
 
-    onAddTextChain(text: any[]) {
+    onAddTextChain(text: any[], callback?: Function) {
         let newArray = [...this.state.textChain, ...text];
-        this.onUpdateTextChain(newArray);
+        this.onUpdateTextChain(newArray, callback);
     }
-    onDisplayGlobalHelp() {
+    onDisplayGlobalHelp(callback?: Function) {
         let newArray = [...this.state.textChain, 'Global Commands', 'Clear: Clears the terminal', 'Reset: Restarts the terminal', 'Help: Opens this menu', 'Exit: Shuts down the terminal']
-        this.onUpdateTextChain(newArray);
+        this.onUpdateTextChain(newArray, callback);
     }
 
     onWriteText(messageProps: any, callback?: Function) {

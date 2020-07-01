@@ -1,10 +1,10 @@
 export interface GameComponentProps {
     overallState: any;
-    clearLines: () => void;
-    updateOverallState: (state: any) => void;
-    addLine: (newLines: any[]) => void;
+    clearLines: (callback?: Function) => void;
+    updateOverallState: (state: any, callback?: Function) => void;
+    addLine: (newLines: any[], callback?: Function) => void;
     updateComponent: (newComponent: React.ElementType) => void;
-    showGlobalHelp: () => void;
+    showGlobalHelp: (callback?: Function) => void;
     onWriteText: (messageProps: any, callback?: Function) => void;
 }
 

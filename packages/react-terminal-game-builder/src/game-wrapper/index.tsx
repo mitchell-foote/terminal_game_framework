@@ -25,11 +25,12 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
         this.onAddTextChain = this.onAddTextChain.bind(this);
         this.onDisplayGlobalHelp = this.onDisplayGlobalHelp.bind(this);
         this.onWriteText = this.onWriteText.bind(this);
+        this.scrollToBottom = this.scrollToBottom.bind(this);
     }
 
     onUpdateTextChain(textArray: any[], callback?: Function) {
-        console.log(textArray);
         this.setState({ textChain: textArray }, () => {
+            this.scrollToBottom();
             this.forceUpdate();
             callback && callback();
         });
@@ -62,6 +63,11 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
         this.onAddTextChain([<ShowTextHelper {...messageProps} onComplete={callback} />])
     }
 
+    scrollToBottom() {
+        let objDiv = document.getElementById("terminal-text-area");
+        objDiv && (objDiv.scrollTop = objDiv.scrollHeight);
+    }
+
     render() {
         let CurrentComponent = this.state.currentComponent;
         return (<div className={`${styles['full-wrapped-terminal']} ${styles['hacker-font']} `} id="root-terminal-area">
@@ -78,6 +84,7 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
                         overallState={this.state.overallState}
                         updateOverallState={this.onUpdateOverallState}
                         onWriteText={this.onWriteText}
+                        updateScroll={this.scrollToBottom}
                     />
                 </div>
 

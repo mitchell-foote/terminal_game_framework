@@ -64,8 +64,8 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
 
     render() {
         let CurrentComponent = this.state.currentComponent;
-        return (<div className={`${styles['full-wrapped-terminal']} ${styles['hacker-font']}`} id="root-terminal-area">
-            <div id="terminal-text-area" className={`${styles['terminal-text-area']}`}>
+        return (<div className={`${styles['full-wrapped-terminal']} ${styles['hacker-font']} `} id="root-terminal-area">
+            <div id="terminal-text-area" className={`${styles['terminal-text-area']} ${styles['scrollbar']}`}>
                 {this.state.textChain.map((each, index) => {
                     return (<div key={index + ' text'} className={`${styles['line-wrapper']}`}>{each}</div>)
                 })}

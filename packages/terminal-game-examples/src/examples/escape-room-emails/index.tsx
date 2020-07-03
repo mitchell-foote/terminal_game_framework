@@ -23,7 +23,7 @@ export interface EscapeRoomEmailsState {
     failedLogins: number
 }
 
-// accounts lFerretti (password) -> jFraiser (cassandra) -> dJackson (vala) -> sCarter (scarter) -> jOneal (strg8)
+// accounts lferretti (password) -> jfraiser (cassandra) -> djackson (vala) -> scarter (scarter) -> joneal (strg8)
 
 
 /**
@@ -93,7 +93,7 @@ class EscapeRoomEmails extends React.Component<EscapeRoomEmailsProps, EscapeRoom
         this.setState({ screenState: GameState.NotLoaded }, () => {
             this.props.clearLines(() => {
                 this.props.onWriteText({ message: "Welcome to message server v2.3!" }, () => {
-                    this.props.onWriteText({ message: "Remember that all passwords are in lower case" }, () => {
+                    this.props.onWriteText({ message: "Remember that all entries are in lower case" }, () => {
                         this.setState({ screenState: GameState.MainScreen });
                     })
                 })
@@ -132,14 +132,21 @@ class EscapeRoomEmails extends React.Component<EscapeRoomEmailsProps, EscapeRoom
 
     moveToRecievedMessages = () => {
         this.props.clearLines(() => {
-            this.setState({ screenState: GameState.Recieved });
+            this.props.addLine([`${this.props.overallState.login.username}'s recieved messages`], () => {
+                this.setState({ screenState: GameState.Recieved });
+            })
+
         });
 
     }
 
     moveToSentMessages = () => {
-        this.props.clearLines();
-        this.setState({ screenState: GameState.Sent })
+        this.props.clearLines(() => {
+            this.props.addLine([`${this.props.overallState.login.username}'s sent messages`], () => {
+                this.setState({ screenState: GameState.Sent })
+            })
+        });
+
     }
 
     moveToVictoryRoad = () => {

@@ -10,6 +10,8 @@ export interface LoginWorkflowProps extends GameComponentProps {
     onLoginComplete?: Function;
     disableWelcome?: boolean;
     onLoginFailure?: Function;
+    usernameLabel?: string;
+    passwordLabel?: string
 }
 
 export interface LoginWorkflowState {
@@ -42,11 +44,11 @@ class LoginWorkflow extends React.Component<LoginWorkflowProps, LoginWorkflowSta
         this.props.onWriteText({ message: "Initializing..." }, this.showUsername)
     }
     showUsername = () => {
-        this.props.onWriteText({ message: "Username: " }, this.showUsernamePrompt)
+        this.props.onWriteText({ message: `${this.props.usernameLabel ? this.props.usernameLabel : 'Username'}: ` }, this.showUsernamePrompt)
     }
     showPassword = () => {
         this.setState({ showUsername: false }, () => {
-            this.props.onWriteText({ message: "Password: " }, this.showPasswordPrompt)
+            this.props.onWriteText({ message: `${this.props.passwordLabel ? this.props.passwordLabel : 'Password'}: ` }, this.showPasswordPrompt)
         })
     }
     showUsernamePrompt = () => {
@@ -88,11 +90,13 @@ class LoginWorkflow extends React.Component<LoginWorkflowProps, LoginWorkflowSta
     loadComplete = () => {
         this.setState({ showLoading: false, showUsername: false, showPassword: false }, () => {
             this.props.onWriteText({ message: 'Login Success!' }, () => {
-                !this.props.disableWelcome && this.props.addLine(["Welcome " + this.props.overallState.login.username]);
-                this.props.nextComponent && this.props.updateComponent(this.props.nextComponent);
-                this.props.onLoginComplete && this.props.onLoginComplete();
+                this.completeLogin()
             })
         })
+    }
+    completeLogin = () => {
+        this.props.nextComponent && this.props.updateComponent(this.props.nextComponent);
+        this.props.onLoginComplete && this.props.onLoginComplete();
     }
     finishFlow = () => {
         this.setState({ showPassword: false, showUsername: false, showLoading: true });

@@ -59,7 +59,6 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
     }
 
     onWriteText(messageProps: any, callback?: Function) {
-        console.log(this.state.textChain);
         this.onAddTextChain([<ShowTextHelper {...messageProps} onComplete={callback} />])
     }
 

@@ -10,6 +10,7 @@ export interface ShowTextHelperProps {
     keystrokeTiming?: number;
     nextComponentDelay?: number;
     onComplete?: Function;
+    color?: string;
 }
 
 export interface ShowTextHelperState {
@@ -40,7 +41,7 @@ class ShowTextHelper extends React.Component<ShowTextHelperProps, ShowTextHelper
 
     }
     render() {
-        return (<div id={'show-text-helper-txt-line-' + this.state.uniqueId}>
+        return (<div style={{ color: this.props.color ? this.props.color : 'inherit' }} id={'show-text-helper-txt-line-' + this.state.uniqueId}>
 
         </div>);
     }

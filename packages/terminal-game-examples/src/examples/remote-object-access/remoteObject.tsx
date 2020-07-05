@@ -38,7 +38,7 @@ class RemoteObject extends React.Component<RemoteObjectProps, RemoteObjectState>
     }
 
     componentDidUpdate() {
-        if (this.state.commandsUsed > 5 && !this.state.hack1) {
+        if (this.state.commandsUsed > 6 && !this.state.hack1) {
             this.handleHack1();
         }
         else if (this.state.commandsUsed > 10 && !this.state.hack2) {

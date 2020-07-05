@@ -73,7 +73,7 @@ class EscapeRoomEmails extends React.Component<EscapeRoomEmailsProps, EscapeRoom
 
         if (trueFullText === doorCode) {
             this.setState({ screenState: GameState.NotLoaded }, () => {
-                this.props.onWriteText({ message: "Door Code Accepted!" }, () => {
+                this.props.writeText({ message: "Door Code Accepted!" }, () => {
                     this.moveToVictoryRoad();
                 })
             })
@@ -81,7 +81,7 @@ class EscapeRoomEmails extends React.Component<EscapeRoomEmailsProps, EscapeRoom
         }
         else {
             this.setState({ screenState: GameState.NotLoaded }, () => {
-                this.props.onWriteText({ message: "Door Code Incorrect." }, () => {
+                this.props.writeText({ message: "Door Code Incorrect." }, () => {
                     this.moveToMainPage();
                 })
             })
@@ -92,8 +92,8 @@ class EscapeRoomEmails extends React.Component<EscapeRoomEmailsProps, EscapeRoom
     moveToMainPage = () => {
         this.setState({ screenState: GameState.NotLoaded }, () => {
             this.props.clearLines(() => {
-                this.props.onWriteText({ message: "Welcome to message server v2.3!" }, () => {
-                    this.props.onWriteText({ message: "Remember that all entries are in lower case" }, () => {
+                this.props.writeText({ message: "Welcome to message server v2.3!" }, () => {
+                    this.props.writeText({ message: "Remember that all entries are in lower case" }, () => {
                         this.setState({ screenState: GameState.MainScreen });
                     })
                 })

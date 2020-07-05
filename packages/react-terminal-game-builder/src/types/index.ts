@@ -5,7 +5,7 @@ export interface GameComponentProps {
     addLine: (newLines: any[], callback?: Function) => void;
     updateComponent: (newComponent: React.ElementType) => void;
     showGlobalHelp: (callback?: Function) => void;
-    onWriteText: (messageProps: any, callback?: Function) => void;
+    writeText: (messageProps: any, callback?: Function) => void;
     updateScroll: () => void;
 }
 

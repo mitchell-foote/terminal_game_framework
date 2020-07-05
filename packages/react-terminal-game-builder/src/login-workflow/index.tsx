@@ -41,14 +41,14 @@ class LoginWorkflow extends React.Component<LoginWorkflowProps, LoginWorkflowSta
         this.showInit();
     }
     showInit = () => {
-        this.props.onWriteText({ message: "Initializing..." }, this.showUsername)
+        this.props.writeText({ message: "Initializing..." }, this.showUsername)
     }
     showUsername = () => {
-        this.props.onWriteText({ message: `${this.props.usernameLabel ? this.props.usernameLabel : 'Username'}: ` }, this.showUsernamePrompt)
+        this.props.writeText({ message: `${this.props.usernameLabel ? this.props.usernameLabel : 'Username'}: ` }, this.showUsernamePrompt)
     }
     showPassword = () => {
         this.setState({ showUsername: false }, () => {
-            this.props.onWriteText({ message: `${this.props.passwordLabel ? this.props.passwordLabel : 'Password'}: ` }, this.showPasswordPrompt)
+            this.props.writeText({ message: `${this.props.passwordLabel ? this.props.passwordLabel : 'Password'}: ` }, this.showPasswordPrompt)
         })
     }
     showUsernamePrompt = () => {
@@ -69,13 +69,13 @@ class LoginWorkflow extends React.Component<LoginWorkflowProps, LoginWorkflowSta
             if (this.props.allowedLogins) {
                 if (this.props.allowedLogins[this.props.overallState.login.username]) {
                     if (this.props.allowedLogins[this.props.overallState.login.username] !== overallState.login.password) {
-                        this.props.onWriteText({ message: "Login incorrect, please try again" }, this.showUsername);
+                        this.props.writeText({ message: "Login incorrect, please try again" }, this.showUsername);
                         this.props.onLoginFailure && this.props.onLoginFailure();
                         return;
                     }
                 }
                 else {
-                    this.props.onWriteText({ message: "Login incorrect, please try again" }, this.showUsername);
+                    this.props.writeText({ message: "Login incorrect, please try again" }, this.showUsername);
                     this.props.onLoginFailure && this.props.onLoginFailure();
                     return;
                 }
@@ -89,7 +89,7 @@ class LoginWorkflow extends React.Component<LoginWorkflowProps, LoginWorkflowSta
     }
     loadComplete = () => {
         this.setState({ showLoading: false, showUsername: false, showPassword: false }, () => {
-            this.props.onWriteText({ message: 'Login Success!' }, () => {
+            this.props.writeText({ message: 'Login Success!' }, () => {
                 this.completeLogin()
             })
         })

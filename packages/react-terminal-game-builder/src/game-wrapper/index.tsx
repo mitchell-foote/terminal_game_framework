@@ -82,7 +82,7 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
                         updateComponent={this.onUpdateCurrentComponent}
                         overallState={this.state.overallState}
                         updateOverallState={this.onUpdateOverallState}
-                        onWriteText={this.onWriteText}
+                        writeText={this.onWriteText}
                         updateScroll={this.scrollToBottom}
                     />
                 </div>

@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import { GameWrapper } from 'react-terminal-game-builder';
+import { BrowserRouter, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import EscapeRoomEmails from './examples/escape-room-emails';
 import MainStoryWrapper from './examples/remote-object-access';
 
@@ -9,14 +11,31 @@ let satellitePrompt = `Remote satellite Terminal: We've gotten some odd readings
 
 function App() {
   return (
-    <div className="total-page terminal-background">
-      <div className="terminal-title">
-        {satellitePrompt}
-      </div>
-      <div className="terminal-holder">
-        <GameWrapper startingComponent={MainStoryWrapper} />
-      </div>
-    </div>
+    <BrowserRouter>
+      <Route exact path="/">
+        <div className="total-page terminal-background">
+          <Link to="/message">To Message</Link>
+          <div className="terminal-title">
+            {satellitePrompt}
+          </div>
+          <div className="terminal-holder">
+            <GameWrapper startingComponent={MainStoryWrapper} />
+          </div>
+        </div>
+      </Route>
+      <Route path="/message">
+        <div className="total-page terminal-background">
+          <Link to="/">To Remote Access</Link>
+          <div className="terminal-title">
+            {escapeRoomPrompt}
+          </div>
+          <div className="terminal-holder">
+            <GameWrapper startingComponent={EscapeRoomEmails} />
+          </div>
+        </div>
+      </Route>
+    </BrowserRouter>
+
   );
 }
 

@@ -11,5 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "lerna": "^3.22.1"
+  },
+  "dependencies": {
+    "@types/react-router-dom": "^5.1.5"
   }
 }

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This is a monorepo housing a game library and a CRA area in which to run/deploy it",
   "main": "index.js",
+  "private": "true",
   "scripts": {
     "test": "npm run test"
   },

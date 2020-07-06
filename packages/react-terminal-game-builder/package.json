@@ -1,9 +1,19 @@
 {
   "name": "react-terminal-game-builder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a terminal puzzle game library, hopefully to be used to make fun terminal-looking games. ",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
+  "keywords": [
+    "terminal game",
+    "react",
+    "basic",
+    "terminal"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mitchell-foote/terminal_game_framework"
+  },
   "scripts": {
     "test": "npm run test",
     "libbuild": "rm -rf ./lib && tsc  && find ./lib -name '*_tests_*' -exec rm -r {} + && webpack",

@@ -35,7 +35,7 @@ class MainStoryWrapper extends React.Component<MainStoryWrapperProps, MainStoryW
     moveToLoginScreen = () => {
         this.setState({ mainGameState: GameState.NotLoaded }, () => {
             this.props.clearLines(() => {
-                this.props.addLine(["satellite access terminal v2.4"], () => {
+                this.props.addLine(["Satellite access terminal v2.4"], () => {
                     this.setState({ mainGameState: GameState.Login });
 
                 })

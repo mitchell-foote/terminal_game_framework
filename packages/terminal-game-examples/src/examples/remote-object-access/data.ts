@@ -40,3 +40,17 @@ export const StartingSystems = {
     repair: 'offline',
     sensors: 'error'
 };
+
+export type StartingSystemsType = {
+    computer: string,
+    engines: string,
+    communications: string,
+    repair: string,
+    sensors: string
+}
+
+export type LogsType = {
+    title: string
+    description: string
+    text: string
+}

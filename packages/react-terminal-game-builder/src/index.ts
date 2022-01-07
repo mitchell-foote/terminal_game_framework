@@ -4,6 +4,7 @@ import LoginWorkflow from './login-workflow';
 import OptionsHelper from './option-helper';
 import ShowTextHelper from './show-text-helper';
 import TerminalInputHelper from './terminal-input-helper';
+import ConsolePicker from './console-picker';
 import * as Types from './types';
 
 export { GameWrapper };
@@ -12,6 +13,7 @@ export { LoginWorkflow };
 export { OptionsHelper };
 export { ShowTextHelper };
 export { TerminalInputHelper };
+export { ConsolePicker }
 export { Types };
 
 export default {
@@ -20,5 +22,6 @@ export default {
     LoginWorkflow,
     OptionsHelper,
     ShowTextHelper,
-    TerminalInputHelper
+    TerminalInputHelper,
+    ConsolePicker
 }

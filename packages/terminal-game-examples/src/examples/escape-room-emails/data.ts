@@ -119,3 +119,20 @@ export const emails = {
         recieved: []
     }
 }
+
+export type SentEmail = {
+    to: string
+    title: string
+    text: string
+}
+
+export type RecievedEmail = {
+    from: string
+    title: string
+    text: string
+}
+
+export type PersonalEmails = {
+    sent: SentEmail[]
+    recieved: RecievedEmail[]
+}

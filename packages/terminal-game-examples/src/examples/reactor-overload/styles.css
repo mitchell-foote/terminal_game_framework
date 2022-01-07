@@ -1,0 +1,12 @@
+.timer-parent {
+  border-radius: 10px;
+  border: 2px solid limegreen;
+  color: limegreen;
+  display: flex;
+  flex-direction: column;
+  height: 35vh;
+  width: 35vw;
+  padding: 1rem;
+  margin-left: 5rem;
+  font-family: "Courier New", Courier, monospace;
+}

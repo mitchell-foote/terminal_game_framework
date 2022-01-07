@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Types, OptionsHelper, LoginWorkflow, ShowTextHelper, TerminalInputHelper, LoadingHelper } from 'react-terminal-game-builder'
-import { emails, userGroups, RecievedMessage, SentMessage, doorCode } from './data';
+import { emails, userGroups, RecievedMessage, SentMessage, doorCode, PersonalEmails } from './data';
 
-export interface EscapeRoomEmailsProps extends Types.GameComponentProps {
+export interface EscapeRoomEmailsProps extends Types.GameComponentProps<EmailOverallState> {
 
 }
 
@@ -25,6 +25,11 @@ export interface EscapeRoomEmailsState {
 
 // accounts lferretti (password) -> jfraiser (cassandra) -> djackson (vala) -> scarter (scarter) -> joneal (strg8)
 
+
+export interface EmailOverallState {
+    emails: Record<string, PersonalEmails>
+    login: any
+}
 
 /**
  * Basic story: 

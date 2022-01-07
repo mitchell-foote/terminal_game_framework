@@ -1,82 +1,81 @@
-
 .flex-row {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .flex-column {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .full-wrapped-terminal {
-    height: 100%;
-    background-color: black;
-    padding: 1em;
+  height: 100%;
+  background-color: black;
+  margin: 1em;
 }
 
 .terminal-text-area {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    overflow-y: auto;
-    border-radius: 10px;
-    border: 2px solid limegreen;
-    color: limegreen;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-y: auto;
+  border-radius: 10px;
+  border: 2px solid limegreen;
+  color: limegreen;
 }
 
 .line-wrapper {
-    margin: .5em;
-    margin-left: 1em;
-    width: calc(100% - 1.5em);
+  margin: 0.5em;
+  margin-left: 1em;
+  width: calc(100% - 1.5em);
 }
 
 .percent-padding {
-    padding-left: 5px;
+  padding-left: 5px;
 }
 
 .bad-color {
-    color: red;
+  color: red;
 }
 
 .med-color {
-    color: yellow;
+  color: yellow;
 }
 
 .reg-color {
-    color: limegreen;
+  color: limegreen;
 }
 
 .terminal-input {
-    width: 100%;
-    border-width: 0;
-    border-style: none;
-    font-size: inherit;
-    background-color: inherit;
-    color: inherit;
-    font-family: inherit;
-    padding: 0;
+  width: 100%;
+  border-width: 0;
+  border-style: none;
+  font-size: inherit;
+  background-color: inherit;
+  color: inherit;
+  font-family: inherit;
+  padding: 0;
 }
 .terminal-input:focus {
-    outline-offset: 0;
-    outline: none;
+  outline-offset: 0;
+  outline: none;
 }
 
 .hacker-font {
-    font-family: "Courier New", Courier, monospace;
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: normal;
+  font-style: normal;
 }
 
 .scrollbar {
-    overflow-y: scroll;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .scrollbar::-webkit-scrollbar {
-    width: 0;
-    height: 0;
+  width: 0;
+  height: 0;
 }

@@ -18,7 +18,8 @@
     "test": "npm run test",
     "libbuild": "rm -rf ./lib && tsc  && find ./lib -name '*_tests_*' -exec rm -r {} + && webpack",
     "build": "npm run libbuild",
-    "story": "start-storybook"
+    "story": "start-storybook",
+    "prepublish": "npm run build"
   },
   "author": "Mitchell Foote",
   "license": "ISC",

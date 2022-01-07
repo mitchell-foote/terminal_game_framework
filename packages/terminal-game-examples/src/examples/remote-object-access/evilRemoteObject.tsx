@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Types, LoadingHelper, TerminalInputHelper } from 'react-terminal-game-builder';
+import { SateliteOverallState } from '.';
 
-export interface EvilRemoteObjectProps extends Types.GameComponentProps {
+export interface EvilRemoteObjectProps extends Types.GameComponentProps<SateliteOverallState> {
     onLogout: Function;
 }
 

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { GameComponentProps } from '../types';
+import { GameComponentProps, LoginOverallState } from '../types';
 import TerminalInputHelper from '../terminal-input-helper';
 import LoadingHelper from '../loading-helper';
 
 
-export interface LoginWorkflowProps extends GameComponentProps {
+export interface LoginWorkflowProps extends GameComponentProps<LoginOverallState> {
     allowedLogins?: { [index: string]: string };
     nextComponent?: React.ElementType;
     onLoginComplete?: Function;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Types, LoginWorkflow } from 'react-terminal-game-builder';
-import { StartingSystems, Logs } from './data';
+import { StartingSystems, Logs, StartingSystemsType, LogsType } from './data';
 import RemoteObject from './remoteObject';
 import EvilRemoteObject from './evilRemoteObject';
 
@@ -12,7 +12,12 @@ enum GameState {
     BadSatLoggedIn
 }
 
-export interface MainStoryWrapperProps extends Types.GameComponentProps {
+export interface SateliteOverallState extends Types.LoginOverallState {
+    systemList: Record<string, string>,
+    logs: LogsType[]
+}
+
+export interface MainStoryWrapperProps extends Types.GameComponentProps<SateliteOverallState> {
 
 }
 

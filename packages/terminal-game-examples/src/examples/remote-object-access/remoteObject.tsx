@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Types, LoadingHelper, OptionsHelper, TerminalInputHelper } from 'react-terminal-game-builder';
 import { generateHackedText } from './helpers';
 import { Logs } from './data';
+import { SateliteOverallState } from '.';
 
 enum GameState {
     NotLoaded,
@@ -11,7 +12,7 @@ enum GameState {
 }
 
 
-export interface RemoteObjectProps extends Types.GameComponentProps {
+export interface RemoteObjectProps extends Types.GameComponentProps<SateliteOverallState> {
     onLogout: Function;
 }
 
@@ -61,7 +62,7 @@ class RemoteObject extends React.Component<RemoteObjectProps, RemoteObjectState>
     handleHack2 = () => {
         this.setState({ hack2: true, gameState: GameState.NotLoaded }, () => {
             this.props.writeText({ message: "Firewall breach det", color: 'yellow' }, () => {
-                this.props.writeText({ message: "Where... Are... YOU?", color: 'red', keystrokeTimeing: 300 }, () => {
+                this.props.writeText({ message: "Where... Are... YOU?", color: 'red', keystrokeTiming: 300 }, () => {
                     this.setState({ gameState: GameState.MainPage })
                 })
 
@@ -72,7 +73,7 @@ class RemoteObject extends React.Component<RemoteObjectProps, RemoteObjectState>
     handleFinalHack = () => {
         this.setState({ finalHack: true, gameState: GameState.NotLoaded }, () => {
             this.props.clearLines(() => {
-                this.props.writeText({ message: "I... Found.... YOU... XD", nextComponentDelay: 2, keystrokeTimeing: 500, color: 'red' }, () => {
+                this.props.writeText({ message: "I... Found.... YOU... XD", nextComponentDelay: 2, keystrokeTiming: 500, color: 'red' }, () => {
                     this.props.writeText({ message: "Connection Terminated", nextComponentDelay: 5 }, () => {
                         this.props.onLogout();
                     })
@@ -130,7 +131,7 @@ class RemoteObject extends React.Component<RemoteObjectProps, RemoteObjectState>
         console.log('In use', system);
         this.setState({ gameState: GameState.NotLoaded }, () => {
             if (system) {
-                let systemList = this.props.overallState.systemList;
+                let systemList: any = this.props.overallState.systemList;
                 let systemStatus = systemList[system];
                 if (systemStatus !== 'ready') {
                     this.props.addLine([generateHackedText(`system is unable to be used`, this.state.commandsUsed)], () => {

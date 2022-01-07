@@ -1,20 +1,23 @@
 import * as React from 'react';
 import styles from '../styles/styles.module.css';
 import ShowTextHelper from '../show-text-helper';
+import { OverallStateMediaPlayer } from '../types';
+
 
 export interface GameWrapperProps {
     theme?: string
     startingComponent: React.ElementType
+    onUpdateExternalState: (state: any, callback?: () => void) => void
+    overallState: any
 }
 
 export interface GameWrapperState {
-    overallState: any;
     textChain: any[];
     currentComponent: React.ElementType
 }
 
 class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
-    state: GameWrapperState = { overallState: {}, textChain: [], currentComponent: () => { return (<></>) } };
+    state: GameWrapperState = { textChain: [], currentComponent: () => { return (<></>) } };
     constructor(props: GameWrapperProps) {
         super(props);
         this.state.currentComponent = this.props.startingComponent;
@@ -43,10 +46,9 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
     onUpdateCurrentComponent(newComponent: React.ElementType) {
         this.setState({ currentComponent: newComponent });
     }
-    onUpdateOverallState(overallState: any, callback?: Function) {
-        this.setState({ overallState: overallState }, () => {
-            callback && callback();
-        });
+    onUpdateOverallState(overallState: any, callback?: () => void) {
+        this.props.onUpdateExternalState(overallState, callback);
+
     }
 
     onAddTextChain(text: any[], callback?: Function) {
@@ -69,26 +71,28 @@ class GameWrapper extends React.Component<GameWrapperProps, GameWrapperState> {
 
     render() {
         let CurrentComponent = this.state.currentComponent;
-        return (<div className={`${styles['full-wrapped-terminal']} ${styles['hacker-font']} `} id="root-terminal-area">
-            <div id="terminal-text-area" className={`${styles['terminal-text-area']} ${styles['scrollbar']}`}>
-                {this.state.textChain.map((each, index) => {
-                    return (<div key={index + ' text'} className={`${styles['line-wrapper']}`}>{each}</div>)
-                })}
-                <div className={`${styles['line-wrapper']}`}>
-                    <CurrentComponent
-                        clearLines={this.onClearTextChain}
-                        addLine={this.onAddTextChain}
-                        showGlobalHelp={this.onDisplayGlobalHelp}
-                        updateComponent={this.onUpdateCurrentComponent}
-                        overallState={this.state.overallState}
-                        updateOverallState={this.onUpdateOverallState}
-                        writeText={this.onWriteText}
-                        updateScroll={this.scrollToBottom}
-                    />
+        return (
+            <div className={`${styles['full-wrapped-terminal']} ${styles['hacker-font']} `} id="root-terminal-area">
+                <div id="terminal-text-area" className={`${styles['terminal-text-area']} ${styles['scrollbar']}`}>
+                    {this.state.textChain.map((each, index) => {
+                        return (<div key={index + ' text'} className={`${styles['line-wrapper']}`}>{each}</div>)
+                    })}
+                    <div className={`${styles['line-wrapper']}`}>
+                        <CurrentComponent
+                            clearLines={this.onClearTextChain}
+                            addLine={this.onAddTextChain}
+                            showGlobalHelp={this.onDisplayGlobalHelp}
+                            updateComponent={this.onUpdateCurrentComponent}
+                            overallState={this.props.overallState}
+                            updateOverallState={this.onUpdateOverallState}
+                            writeText={this.onWriteText}
+                            updateScroll={this.scrollToBottom}
+                        />
+                    </div>
+
                 </div>
 
-            </div>
-        </div>);
+            </div>);
     }
 }
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Types, LoadingHelper, OptionsHelper, TerminalInputHelper } from 'react-terminal-game-builder';
+import { Types, LoadingHelper, OptionsHelper, TerminalInputHelper, ConsolePicker } from 'react-terminal-game-builder';
 import { generateHackedText } from './helpers';
 import { Logs } from './data';
 import { SateliteOverallState } from '.';
@@ -122,7 +122,7 @@ class RemoteObject extends React.Component<RemoteObjectProps, RemoteObjectState>
                 break;
             }
             default: {
-                this.props.addLine([generateHackedText("Command not recognized", this.state.commandsUsed)])
+                this.props.addLine([generateHackedText("Command not recognized, please type 'help' for command list", this.state.commandsUsed)])
             }
         }
     }
@@ -302,7 +302,10 @@ class RemoteObject extends React.Component<RemoteObjectProps, RemoteObjectState>
     doRepair = (system: string) => {
         this.setState({ gameState: GameState.NotLoaded }, () => {
             let overallState = { ...this.props.overallState };
-            if (system && overallState.systemList[system]) {
+            if (overallState.systemList['repair'] === 'offline') {
+                this.props.addLine(['Unable to use repair system: Repair system is offline'], () => this.goToCommandLine())
+            }
+            else if (system && overallState.systemList[system]) {
                 switch (overallState.systemList[system]) {
                     case 'error': {
                         this.props.addLine([<LoadingHelper message={generateHackedText(`Repairing ${system}`, this.state.commandsUsed)} startPercent={0} endPercent={100} onFinish={() => {
@@ -384,9 +387,8 @@ class RemoteObject extends React.Component<RemoteObjectProps, RemoteObjectState>
     }
 
     goToCommandLine = () => {
-        this.props.writeText({ message: generateHackedText(`Sat command line: type 'help' for command list`, this.state.commandsUsed) }, () => {
+        this.props.addLine([generateHackedText(`Sat command line: type 'help' for command list`, this.state.commandsUsed)], () => {
             this.setState({ gameState: GameState.MainPage, commandsUsed: this.state.commandsUsed + 1 });
-
         })
     }
 
@@ -401,14 +403,8 @@ class RemoteObject extends React.Component<RemoteObjectProps, RemoteObjectState>
                 }
             }
         });
-        mappedLogs.push({
-            name: 'back',
-            description: generateHackedText('return to previous page', this.state.commandsUsed),
-            action: () => {
-                this.goToCommandLine();
-            }
-        });
-        return (<OptionsHelper options={mappedLogs} addLine={this.props.addLine} allowNumberChoice={true} />)
+
+        return (<ConsolePicker options={mappedLogs} scrollToBottom={this.props.updateScroll} onBackout={() => this.setState({ gameState: GameState.NotLoaded }, () => this.goToCommandLine())} />)
     }
 
 

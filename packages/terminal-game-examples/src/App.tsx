@@ -13,6 +13,9 @@ import ShieldTakedownMainComponent from './examples/shield-takedown';
 import ReactorControlFullComponent from './examples/reactor-overload/full-wrapped'
 import VirusHackingWrapped from './examples/hack-o-matic/full-wrapper';
 import ComputerRepairWrapped from './examples/computer-restore/full-wrapped';
+import SpaceCenterVintageWrapped from './examples/sc-terminal/full-wrapped'
+import DiskRestoreAndDecrypt from './examples/disk-restore-n-decrypt';
+import DeviceRestoreFullWrapped from './examples/disk-restore-n-decrypt/full-wrapped';
 
 /**
  * Ideas
@@ -70,6 +73,18 @@ class App extends React.Component<AppProps, AppState> {
                 </button>
                 <button onClick={() => routeProps.history.push('/computer-restore?backups=yes&restore=yes')}>
                   Default Computer
+                </button>
+                <button onClick={() => routeProps.history.push('/scterminal')}>
+                  Default SC Terminal (Random Code)
+                </button>
+                <button onClick={() => routeProps.history.push('/scterminal?access_code=5793&name=Starfleet%20Intelligence%20terminal')}>
+                  Default SC Terminal (Set Code/Name)
+                </button>
+                <button onClick={() => routeProps.history.push('/scterminal?login_type=password')}>
+                  Default SC Terminal (Any Pass)
+                </button>
+                <button onClick={() => routeProps.history.push('/scterminal?login_type=password&password=starlord')}>
+                  Default SC Terminal (Pass is starlord)
                 </button>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -196,6 +211,9 @@ class App extends React.Component<AppProps, AppState> {
       <Route path={`/hackingsys`}>
         <VirusHackingWrapped />
       </Route>
+      <Route path={'/device-repair'}>
+        <DeviceRestoreFullWrapped />
+      </Route>
       <Route path="/satelite">
         <div className="total-page terminal-background">
           <Link to="/message">To Message</Link>
@@ -231,6 +249,9 @@ class App extends React.Component<AppProps, AppState> {
       </Route>
       <Route path="/reactor">
         <ReactorControlFullComponent />
+      </Route>
+      <Route path="/scterminal">
+        <SpaceCenterVintageWrapped />
       </Route>
       <Route path="/test">
         <div className='total-page terminal-background'>

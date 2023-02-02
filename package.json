@@ -10,7 +10,7 @@
   "author": "Mitchell Foote",
   "license": "ISC",
   "devDependencies": {
-    "lerna": "^3.22.1"
+    "lerna": "^6.4.1"
   },
   "dependencies": {
     "@types/react-router-dom": "^5.1.5"
